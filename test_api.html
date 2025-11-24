@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API测试工具 | SAU脑机与人工智能俱乐部</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#10B981',
+                        accent: '#8B5CF6',
+                        neutral: '#1F2937',
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                },
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .card-hover {
+                @apply hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200 font-inter">
+    <div class="container mx-auto px-4 py-12">
+        <header class="mb-12 text-center">
+            <h1 class="text-4xl font-bold mb-4 text-primary">后端API测试工具</h1>
+            <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+                用于测试SAU脑机与人工智能俱乐部网站的后端API连接和功能
+            </p>
+        </header>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+            <!-- 测试配置 ---
+            <div class="lg:col-span-1 space-y-6">
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 card-hover">
+                    <h2 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fa fa-cog text-primary mr-2"></i>
+                        测试配置
+                    </h2>
+                    <div class="space-y-4">
+                        <div class="space-y-2">
+                            <label for="apiUrl" class="block text-sm font-medium">API基础URL</label>
+                            <input type="text" id="apiUrl" value="http://localhost:5000/api" 
+                                class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 focus:ring-2 focus:ring-primary dark:focus:ring-primary/70 focus:border-primary outline-none transition-all">
+                        </div>
+                        <button id="testConnection" 
+                            class="w-full bg-primary hover:bg-primary/90 text-white font-medium py-2 px-4 rounded-lg transition-all flex items-center justify-center">
+                            <i class="fa fa-check-circle mr-2"></i>
+                            测试连接
+                        </button>
+                        <div id="connectionStatus" class="text-sm h-8 flex items-center justify-center">
+                            <span class="text-gray-500 dark:text-gray-400">等待测试...</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 card-hover">
+                    <h2 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fa fa-info-circle text-primary mr-2"></i>
+                        API端点列表
+                    </h2>
+                    <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                        <li class="flex items-center">
+                            <i class="fa fa-arrow-right text-xs text-primary mr-2"></i>
+                            GET /api/events - 获取活动列表
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-arrow-right text-xs text-primary mr-2"></i>
+                            GET /api/stats - 获取统计数据
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-arrow-right text-xs text-primary mr-2"></i>
+                            POST /api/apply - 提交申请表
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-arrow-right text-xs text-primary mr-2"></i>
+                            POST /api/contact - 提交联系表单
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-arrow-right text-xs text-primary mr-2"></i>
+                            POST /api/newsletter - 订阅通讯
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 测试结果 ---
+            <div class="lg:col-span-2 bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 card-hover">
+                <h2 class="text-xl font-bold mb-6 flex items-center">
+                    <i class="fa fa-table text-primary mr-2"></i>
+                    测试结果
+                </h2>
+                <div class="space-y-6">
+                    <!-- 活动列表测试 ---
+                    <div class="border-b border-gray-200 dark:border-gray-700 pb-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="font-bold flex items-center">
+                                <i class="fa fa-calendar text-primary mr-2"></i>
+                                活动列表测试
+                            </h3>
+                            <button id="testEvents" 
+                                class="bg-secondary hover:bg-secondary/90 text-white text-sm py-1 px-3 rounded-lg transition-all flex items-center">
+                                测试
+                                <i class="fa fa-play-circle ml-1"></i>
+                            </button>
+                        </div>
+                        <div id="eventsResult" class="text-sm min-h-[150px] bg-gray-50 dark:bg-gray-900 p-4 rounded-lg overflow-auto">
+                            <pre class="text-gray-500 dark:text-gray-400">// 点击上方测试按钮查看结果</pre>
+                        </div>
+                    </div>
+
+                    <!-- 统计数据测试 ---
+                    <div class="border-b border-gray-200 dark:border-gray-700 pb-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="font-bold flex items-center">
+                                <i class="fa fa-bar-chart text-primary mr-2"></i>
+                                统计数据测试
+                            </h3>
+                            <button id="testStats" 
+                                class="bg-secondary hover:bg-secondary/90 text-white text-sm py-1 px-3 rounded-lg transition-all flex items-center">
+                                测试
+                                <i class="fa fa-play-circle ml-1"></i>
+                            </button>
+                        </div>
+                        <div id="statsResult" class="text-sm min-h-[150px] bg-gray-50 dark:bg-gray-900 p-4 rounded-lg overflow-auto">
+                            <pre class="text-gray-500 dark:text-gray-400">// 点击上方测试按钮查看结果</pre>
+                        </div>
+                    </div>
+
+                    <!-- 表单提交测试 ---
+                    <div>
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="font-bold flex items-center">
+                                <i class="fa fa-envelope text-primary mr-2"></i>
+                                订阅通讯测试
+                            </h3>
+                            <div class="flex space-x-2">
+                                <input type="email" id="testEmail" placeholder="输入测试邮箱" 
+                                    class="px-3 py-1 text-sm border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-900 focus:ring-1 focus:ring-primary focus:border-primary outline-none transition-all"
+                                    value="test@example.com">
+                                <button id="testNewsletter" 
+                                    class="bg-secondary hover:bg-secondary/90 text-white text-sm py-1 px-3 rounded-lg transition-all flex items-center">
+                                    测试
+                                    <i class="fa fa-paper-plane ml-1"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div id="newsletterResult" class="text-sm min-h-[100px] bg-gray-50 dark:bg-gray-900 p-4 rounded-lg overflow-auto">
+                            <pre class="text-gray-500 dark:text-gray-400">// 点击上方测试按钮查看结果</pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 部署指南 ---
+        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 card-hover">
+            <h2 class="text-xl font-bold mb-4 flex items-center">
+                <i class="fa fa-book text-primary mr-2"></i>
+                后端部署指南
+            </h2>
+            <div class="space-y-4 text-sm text-gray-600 dark:text-gray-400">
+                <p>要启动后端服务，请按照以下步骤操作：</p>
+                <pre class="bg-gray-900 text-gray-200 p-4 rounded-lg overflow-x-auto"># 1. 进入backend目录
+cd backend
+
+# 2. 安装依赖
+pip install -r requirements.txt
+
+# 3. 运行应用
+python app.py
+
+# 或使用Flask命令
+flask run --host=0.0.0.0 --port=5000</pre>
+                <p>服务启动后，后端API将在 http://localhost:5000/api 提供服务。</p>
+                <p>如果遇到端口冲突，请修改端口号。所有API支持CORS跨域请求，可直接与前端集成。</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // API基础URL
+        let apiBaseUrl = document.getElementById('apiUrl').value;
+
+        // 显示结果函数
+        function displayResult(elementId, data, success = true) {
+            const element = document.getElementById(elementId);
+            if (success) {
+                element.innerHTML = `<pre class="text-green-600 dark:text-green-400">${JSON.stringify(data, null, 2)}</pre>`;
+            } else {
+                element.innerHTML = `<pre class="text-red-600 dark:text-red-400">${data}</pre>`;
+            }
+        }
+
+        // 更新连接状态
+        function updateConnectionStatus(message, success = true) {
+            const statusElement = document.getElementById('connectionStatus');
+            if (success) {
+                statusElement.innerHTML = `<span class="text-green-600 dark:text-green-400 flex items-center"><i class="fa fa-check-circle mr-1"></i>${message}</span>`;
+            } else {
+                statusElement.innerHTML = `<span class="text-red-600 dark:text-red-400 flex items-center"><i class="fa fa-exclamation-circle mr-1"></i>${message}</span>`;
+            }
+        }
+
+        // 测试连接
+        document.getElementById('testConnection').addEventListener('click', async () => {
+            apiBaseUrl = document.getElementById('apiUrl').value;
+            updateConnectionStatus('测试中...', true);
+            
+            try {
+                // 尝试访问一个简单的GET端点
+                const response = await fetch(`${apiBaseUrl}/events`);
+                if (response.ok) {
+                    updateConnectionStatus('连接成功！后端API正常运行。');
+                } else {
+                    updateConnectionStatus(`连接失败：HTTP ${response.status}`, false);
+                }
+            } catch (error) {
+                updateConnectionStatus(`连接失败：${error.message}`, false);
+            }
+        });
+
+        // 测试活动列表
+        document.getElementById('testEvents').addEventListener('click', async () => {
+            apiBaseUrl = document.getElementById('apiUrl').value;
+            displayResult('eventsResult', { loading: true });
+            
+            try {
+                const response = await fetch(`${apiBaseUrl}/events`);
+                if (response.ok) {
+                    const data = await response.json();
+                    displayResult('eventsResult', data);
+                } else {
+                    displayResult('eventsResult', `请求失败：HTTP ${response.status}`, false);
+                }
+            } catch (error) {
+                displayResult('eventsResult', `请求错误：${error.message}`, false);
+            }
+        });
+
+        // 测试统计数据
+        document.getElementById('testStats').addEventListener('click', async () => {
+            apiBaseUrl = document.getElementById('apiUrl').value;
+            displayResult('statsResult', { loading: true });
+            
+            try {
+                const response = await fetch(`${apiBaseUrl}/stats`);
+                if (response.ok) {
+                    const data = await response.json();
+                    displayResult('statsResult', data);
+                } else {
+                    displayResult('statsResult', `请求失败：HTTP ${response.status}`, false);
+                }
+            } catch (error) {
+                displayResult('statsResult', `请求错误：${error.message}`, false);
+            }
+        });
+
+        // 测试订阅通讯
+        document.getElementById('testNewsletter').addEventListener('click', async () => {
+            apiBaseUrl = document.getElementById('apiUrl').value;
+            const email = document.getElementById('testEmail').value;
+            displayResult('newsletterResult', { loading: true });
+            
+            try {
+                const response = await fetch(`${apiBaseUrl}/newsletter`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ email: email })
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    displayResult('newsletterResult', data);
+                } else {
+                    const errorData = await response.json().catch(() => ({ error: '未知错误' }));
+                    displayResult('newsletterResult', errorData.error || `请求失败：HTTP ${response.status}`, false);
+                }
+            } catch (error) {
+                displayResult('newsletterResult', `请求错误：${error.message}`, false);
+            }
+        });
+
+        // 深色模式切换
+        if (localStorage.getItem('darkMode') === 'dark' || 
+            (!localStorage.getItem('darkMode') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+</body>
+</html>

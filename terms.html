@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用条款 | SAU脑机与人工智能俱乐部</title>
+    <meta name="description" content="SAU脑机与人工智能俱乐部网站使用条款，规定用户访问和使用本网站的规则和条件。">
+    <!-- 引入 Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入 Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- 引入 Inter 字体 -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind 配置 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#6366F1',
+                        accent: '#EC4899',
+                        dark: '#1F2937',
+                        light: '#F9FAFB'
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+        }
+    </style>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="font-inter bg-light text-dark antialiased">
+    <!-- 导航栏 -->
+    <nav id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300 py-4 bg-white/90 backdrop-blur-sm shadow-sm">
+        <div class="container mx-auto px-4 md:px-6 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-2">
+                <img src="images/logo.svg" alt="SAU脑机与人工智能俱乐部" class="w-10 h-10 rounded-full">
+                <span class="text-xl font-bold text-dark dark:text-white">SAU脑机与人工智能俱乐部</span>
+            </a>
+            
+            <!-- 桌面端导航 -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="index.html#about" class="font-medium hover:text-primary transition-colors">关于我们</a>
+                <a href="index.html#projects" class="font-medium hover:text-primary transition-colors">研究项目</a>
+                <a href="index.html#members" class="font-medium hover:text-primary transition-colors">团队成员</a>
+                <a href="index.html#contact" class="font-medium hover:text-primary transition-colors">联系我们</a>
+            </div>
+            
+            <!-- 移动端菜单按钮 -->
+            <button id="menu-toggle" class="md:hidden text-dark hover:text-primary transition-colors">
+                <i class="fa fa-bars text-xl"></i>
+            </button>
+        </div>
+        <!-- 移动端导航菜单 -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-white shadow-lg py-4 px-4">
+            <div class="flex flex-col space-y-4">
+                <a href="index.html#about" class="font-medium hover:text-primary transition-colors py-2">关于我们</a>
+                <a href="index.html#projects" class="font-medium hover:text-primary transition-colors py-2">研究项目</a>
+                <a href="index.html#members" class="font-medium hover:text-primary transition-colors py-2">团队成员</a>
+                <a href="index.html#contact" class="font-medium hover:text-primary transition-colors py-2">联系我们</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <main class="container mx-auto px-4 md:px-6 pt-28 pb-16">
+        <div class="max-w-3xl mx-auto">
+            <h1 class="text-3xl md:text-4xl font-bold mb-6 text-dark">使用条款</h1>
+            <p class="text-gray-600 mb-8">最后更新日期：2024年7月1日</p>
+            <p class="text-gray-700 mb-8">欢迎使用SAU脑机与人工智能俱乐部官方网站（以下简称"本网站"）。以下使用条款（"本条款"）规定了您访问和使用本网站的规则和条件。通过访问或使用本网站，您同意受本条款的约束。如果您不同意本条款的任何内容，请立即停止使用本网站。</p>
+            
+            <section class="mb-10">
+                <h2 class="text-2xl font-semibold mb-4 text-dark">1. 定义</h2>
+                <p class="mb-4 text-gray-700">在本条款中，除非上下文另有要求，否则下列术语应具有以下含义：</p>
+                <ul class="list-disc list-inside mb-4 text-gray-700 space-y-2">
+                    <li>"我们"、"我们的"或"SAU脑机与人工智能俱乐部"指[具体法律实体名称]。</li>
+                    <li>"您"或"用户"指访问或使用本网站的个人或实体。</li>
+                    <li>"网站"指SAU脑机与人工智能俱乐部官方网站，包括其所有内容、功能和服务。</li>
+                    <li>"内容"指网站上的所有信息、数据、文本、图形、图像、音频、视频、软件、应用程序、代码和其他材料。</li>
+                </ul>
+            </section>
+            <section class="mb-10">
+                <h2 class="text-2xl font-semibold mb-4 text-dark">2. 网站访问许可</h2>
+                <p class="mb-4 text-gray-700">在遵守本条款的前提下，我们授予您有限的、非排他性的、不可转让的、可撤销的许可，以访问和使用本网站仅用于合法的个人或教育目的。</p>
+                <p class="mb-4 text-gray-700">您不得：</p>
+                <ul class="list-disc list-inside mb-4 text-gray-700 space-y-2">
+                    <li>未经授权复制、修改、分发、销售、出租、租赁、传输、披露或以其他方式商业利用本网站或其任何部分；</li>
+                    <li>使用任何自动化系统、软件、脚本、爬虫或类似技术访问或收集网站数据；</li>
+                    <li>尝试规避或破坏网站的安全措施或干扰网站的正常运行；</li>
+                    <li>使用本网站进行任何非法活动或侵犯他人权利的行为；</li>
+                    <li>移除、掩盖或修改网站上的任何版权、商标或其他专有权利声明；</li>
+                    <li>将本网站用于分发垃圾邮件、病毒或其他有害内容。</li>
+                </ul>
+            </section>
+            <section class="mb-10">
+                <h2 class="text-2xl font-semibold mb-4 text-dark">3. 账户注册与管理</h2>
+                <p class="mb-4 text-gray-700">部分网站功能可能要求您创建账户。在注册账户时，您同意提供准确、完整和最新的信息。您有责任：</p>
+                <ul class="list-disc list-inside mb-4 text-gray-700 space-y-2">
+                    <li>维护您账户信息的准确性和完整性；</li>
+                    <li>保护您账户的密码安全；</li>
+                    <li>对使用您账户发生的所有活动负责；</li>
+                    <li>在发现任何未经授权使用您账户的情况时立即通知我们。</li>
+                </ul>
+                <p class="text-gray-700">我们保留在任何时候，在不事先通知的情况下，暂停或终止您的账户的权利，如果我们认为您违反了本条款或从事任何非法或不当行为。</p>
+            </section>
+            <section class="mb-10">
+                <h2 class="text-2xl font-semibold mb-4 text-dark">4. 知识产权</h2>
+                <p class="mb-4 text-gray-700">本网站及其所有内容，包括但不限于文本、图形、图像、徽标、图标、按钮、音频、视频、数据、软件、源代码、设计和布局，均为SAU脑机与人工智能俱乐部或其许可方的专有财产，受版权、商标和其他知识产权法律的保护。</p>
+                <p class="mb-4 text-gray-700">本条款并未授予您任何知识产权权利。未经我们的事先书面许可，您不得使用我们的商标、服务标记或其他专有信息。</p>
+                <p class="text-gray-700">对于我们网站上可能包含的第三方内容，其知识产权归各自的所有者所有，受适用法律的保护。</p>
+            </section>
+            <section class="mb-10">
+                <h2 class="text-2xl font-semibold mb-4 text-dark">5. 用户内容</h2>
+                <p class="mb-4 text-gray-700">通过本网站提交、上传或发布的任何内容（"用户内容"），您授予我们全球性的、免版税的、非排他性的、可转让的、可再许可的许可，以使用、复制、修改、分发、展示和表演该内容，用于运营、维护、改进和推广本网站及我们的服务。</p>
+                <p class="mb-4 text-gray-700">您保证：</p>
+                <ul class="list-disc list-inside mb-4 text-gray-700 space-y-2">
+                    <li>您拥有或有权提交用户内容，且该内容不侵犯任何第三方的权利；</li>
+                    <li>用户内容不违反任何法律法规，不包含诽谤、淫秽、骚扰或其他非法内容；</li>
+                    <li>用户内容不会对我们或其他用户造成损害。</li>
+                </ul>
+                <p class="text-gray-700">我们保留，但没有义务，自行决定移除任何我们认为不适当、违法或违反本条款的用户内容。</p>
+            </section>
+            <section class="mb-10">
+                <h2 class="text-2xl font-semibold mb-4 text-dark">6. 第三方链接和服务</h2>
+                <p class="mb-4 text-gray-700">本网站可能包含指向第三方网站或服务的链接。这些链接仅为您提供便利，不构成我们对这些第三方网站或服务的认可或背书。我们不对第三方网站或服务的内容、准确性、安全性或合法性负责，也不对您因使用第三方网站或服务而产生的任何损失或损害负责。</p>
+                <p class="text-gray-700">您访问和使用第三方网站或服务应遵守该第三方的条款和条件。</p>
+            </section>
+            <section class="mb-10">
+                <h2 class="text-2xl font-semibold mb-4 text-dark">7. 免责声明</h2>
+                <p class="mb-4 text-gray-700">本网站及其内容按"现状"和"可用"的方式提供，不附带任何形式的保证，无论是明示的还是暗示的。在法律允许的最大范围内，我们明确否认所有明示或暗示的保证，包括但不限于对适销性、特定用途适用性和非侵权性的暗示保证。</p>
+                <p class="mb-4 text-gray-700">我们不保证：</p>
+                <ul class="list-disc list-inside mb-4 text-gray-700 space-y-2">
+                    <li>本网站将不间断、及时、安全或无错误地运行；</li>
+                    <li>本网站或其服务器不含病毒或其他有害组件；</li>
+                    <li>本网站的内容准确、完整或可靠；</li>
+                    <li>使用本网站将产生特定结果。</li>
+                </ul>
+            </section>
+            <section class="mb-10">
+                <h2 class="text-2xl font-semibold mb-4 text-dark">8. 责任限制</h2>
+                <p class="mb-4 text-gray-700">在法律允许的最大范围内，SAU脑机与人工智能俱乐部及其董事、管理人员、员工、代理人、合作伙伴和许可方不对因访问或使用本网站而产生的任何间接、附带、特殊、后果性或惩罚性损害承担责任，包括但不限于利润损失、数据损失、商誉损失、替代商品或服务的购买成本、或任何其他无形损失。</p>
+                <p class="text-gray-700">在任何情况下，我们的总责任，无论是基于合同、侵权（包括疏忽）、产品责任还是其他理论，均不应超过您在使用本网站期间向我们支付的金额（如果有）。</p>
+            </section>
+            <section class="mb-10">
+                <h2 class="text-2xl font-semibold mb-4 text-dark">9. 赔偿</h2>
+                <p class="mb-4 text-gray-700">您同意赔偿、保护和使SAU脑机与人工智能俱乐部及其董事、管理人员、员工、代理人、合作伙伴和许可方免受因以下原因而产生的任何索赔、损害、损失、责任、成本和费用（包括合理的律师费）：</p>
+                <ul class="list-disc list-inside mb-4 text-gray-700 space-y-2">
+                    <li>您访问或使用本网站；</li>
+                    <li>您违反本条款的任何规定；</li>
+                    <li>您侵犯任何第三方的权利，包括但不限于版权、商标、隐私权或其他财产权；</li>
+                    <li>您提交的用户内容。</li>
+                </ul>
+            </section>
+            <section class="mb-10">
+                <h2 class="text-2xl font-semibold mb-4 text-dark">10. 使用条款的修改</h2>
+                <p class="mb-4 text-gray-700">我们保留随时修改本条款的权利。当我们对条款做出重大变更时，我们将通过在网站上发布修订后的条款并更新"最后更新日期"来通知您。</p>
+                <p class="text-gray-700">您继续使用本网站将被视为您接受修订后的条款。我们鼓励您定期查看本条款。</p>
+            </section>
+            <section class="mb-10">
+                <h2 class="text-2xl font-semibold mb-4 text-dark">11. 终止</h2>
+                <p class="mb-4 text-gray-700">您可以随时通过停止使用本网站来终止您与我们的协议。</p>
+                <p class="mb-4 text-gray-700">我们保留在以下情况下终止或暂停您访问本网站的权利，恕不另行通知：</p>
+                <ul class="list-disc list-inside mb-4 text-gray-700 space-y-2">
+                    <li>您违反本条款的任何规定；</li>
+                    <li>法律要求我们这样做；</li>
+                    <li>我们认为您的行为可能对我们、我们的用户或第三方造成伤害或法律责任；</li>
+                    <li>我们合理地怀疑您从事欺诈、滥用或非法活动。</li>
+                </ul>
+            </section>
+            <section class="mb-10">
+                <h2 class="text-2xl font-semibold mb-4 text-dark">12. 法律适用与争议解决</h2>
+                <p class="mb-4 text-gray-700">本条款受中华人民共和国法律管辖，不考虑其法律冲突规定。</p>
+                <p class="mb-4 text-gray-700">因本条款引起的或与本条款有关的任何争议、纠纷或索赔，应首先通过友好协商解决。如果协商不成，任何一方均有权将争议提交至[有管辖权的法院名称]通过诉讼解决。</p>
+            </section>
+            <section class="mb-10">
+                <h2 class="text-2xl font-semibold mb-4 text-dark">13. 联系我们</h2>
+                <p class="mb-4 text-gray-700">如果您对本条款有任何疑问或建议，请通过以下方式联系我们：</p>
+                <ul class="list-disc list-inside text-gray-700 space-y-2">
+                    <li>电子邮件：terms@sau-bciai.club</li>
+                    <li>地址：[学校地址]</li>
+                    <li>电话：[联系电话]</li>
+                </ul>
+            </section>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white py-12">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <a href="index.html" class="flex items-center space-x-2 mb-6">
+                        <img src="images/logo.svg" alt="SAU脑机与人工智能俱乐部" class="w-10 h-10 rounded-full">
+                        <span class="text-xl font-bold">SAU脑机与人工智能俱乐部</span>
+                    </a>
+                    <p class="text-gray-400 mb-6">
+                        探索脑机接口与人工智能的未来，推动人机交互的革命性进步。
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fa fa-weibo text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fa fa-wechat text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fa fa-github text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">快速链接</h3>
+                    <ul class="space-y-3">
+                        <li><a href="index.html#about" class="text-gray-400 hover:text-white transition-colors">关于我们</a></li>
+                        <li><a href="index.html#projects" class="text-gray-400 hover:text-white transition-colors">研究项目</a></li>
+                        <li><a href="index.html#members" class="text-gray-400 hover:text-white transition-colors">团队成员</a></li>
+                        <li><a href="index.html#contact" class="text-gray-400 hover:text-white transition-colors">联系我们</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">政策法规</h3>
+                    <ul class="space-y-3">
+                        <li><a href="privacy.html" class="text-gray-400 hover:text-white transition-colors">隐私政策</a></li>
+                        <li><a href="terms.html" class="text-gray-400 hover:text-white transition-colors">使用条款</a></li>
+                        <li><a href="cookie.html" class="text-gray-400 hover:text-white transition-colors">Cookie政策</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">联系我们</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start space-x-3">
+                            <i class="fa fa-envelope text-gray-400 mt-1"></i>
+                            <span class="text-gray-400">contact@sau-bciai.club</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <i class="fa fa-phone text-gray-400 mt-1"></i>
+                            <span class="text-gray-400">[联系电话]</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <i class="fa fa-map-marker text-gray-400 mt-1"></i>
+                            <span class="text-gray-400">[学校地址]</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8">
+                <p class="text-center text-gray-500">© 2024 SAU脑机与人工智能俱乐部. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 回到顶部按钮 -->
+    <button id="back-to-top" class="fixed bottom-6 right-6 bg-primary text-white p-3 rounded-full shadow-lg opacity-0 invisible transition-all duration-300">
+        <i class="fa fa-arrow-up"></i>
+    </button>
+
+    <!-- JavaScript -->
+    <script>
+        // 导航栏滚动效果
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-white', 'shadow-md');
+                navbar.classList.remove('bg-white/90');
+            } else {
+                navbar.classList.remove('bg-white', 'shadow-md');
+                navbar.classList.add('bg-white/90');
+            }
+        });
+        
+        // 移动端菜单切换
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // 回到顶部按钮
+        const backToTopButton = document.getElementById('back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopButton.classList.remove('opacity-0', 'invisible');
+                backToTopButton.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopButton.classList.add('opacity-0', 'invisible');
+                backToTopButton.classList.remove('opacity-100', 'visible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>

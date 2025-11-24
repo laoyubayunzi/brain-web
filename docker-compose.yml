@@ -1,0 +1,54 @@
+version: '3.8'
+
+# 定义网络
+networks:
+  brainweb-network:
+    driver: bridge
+
+# 定义服务
+services:
+  # 后端API服务
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: brainweb-backend
+    restart: always
+    environment:
+      - DATABASE_URL=sqlite:///./instance/bciai_club.db
+      - SECRET_KEY=${SECRET_KEY:-dev-secret-key}
+      - PORT=8000
+    volumes:
+      - ./backend/instance:/app/instance  # 持久化数据库文件
+    networks:
+      - brainweb-network
+    expose:
+      - "8000"
+    # 生产环境中取消注释以下健康检查
+    # healthcheck:
+    #   test: ["CMD", "curl", "-f", "http://localhost:8000/api/stats"]
+    #   interval: 30s
+    #   timeout: 10s
+    #   retries: 3
+
+  # Nginx作为前端服务器和反向代理
+  nginx:
+    image: nginx:alpine
+    container_name: brainweb-nginx
+    restart: always
+    ports:
+      - "80:80"
+      # 生产环境中配置HTTPS后取消注释
+      # - "443:443"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./:/var/www/html:ro  # 挂载前端静态文件
+    depends_on:
+      - backend
+    networks:
+      - brainweb-network
+
+# 卷定义
+volumes:
+  db-data:
+    driver: local

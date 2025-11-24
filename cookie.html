@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie政策 | SAU脑机与人工智能俱乐部</title>
+    <meta name="description" content="SAU脑机与人工智能俱乐部网站Cookie政策，说明我们如何使用Cookie和类似技术。">
+    <!-- 引入 Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入 Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- 引入 Inter 字体 -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind 配置 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#6366F1',
+                        accent: '#EC4899',
+                        dark: '#1F2937',
+                        light: '#F9FAFB'
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+        }
+    </style>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="font-inter bg-light text-dark antialiased">
+    <!-- 导航栏 -->
+    <nav id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300 py-4 bg-white/90 backdrop-blur-sm shadow-sm">
+        <div class="container mx-auto px-4 md:px-6 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-2">
+                <img src="images/logo.svg" alt="SAU脑机与人工智能俱乐部" class="w-10 h-10 rounded-full">
+                <span class="text-xl font-bold text-dark dark:text-white">SAU脑机与人工智能俱乐部</span>
+            </a>
+            
+            <!-- 桌面端导航 -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="index.html#about" class="font-medium hover:text-primary transition-colors">关于我们</a>
+                <a href="index.html#projects" class="font-medium hover:text-primary transition-colors">研究项目</a>
+                <a href="index.html#members" class="font-medium hover:text-primary transition-colors">团队成员</a>
+                <a href="index.html#contact" class="font-medium hover:text-primary transition-colors">联系我们</a>
+            </div>
+            
+            <!-- 移动端菜单按钮 -->
+            <button id="menu-toggle" class="md:hidden text-dark hover:text-primary transition-colors">
+                <i class="fa fa-bars text-xl"></i>
+            </button>
+        </div>
+        <!-- 移动端导航菜单 -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-white shadow-lg py-4 px-4">
+            <div class="flex flex-col space-y-4">
+                <a href="index.html#about" class="font-medium hover:text-primary transition-colors py-2">关于我们</a>
+                <a href="index.html#projects" class="font-medium hover:text-primary transition-colors py-2">研究项目</a>
+                <a href="index.html#members" class="font-medium hover:text-primary transition-colors py-2">团队成员</a>
+                <a href="index.html#contact" class="font-medium hover:text-primary transition-colors py-2">联系我们</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <main class="container mx-auto px-4 md:px-6 pt-28 pb-16">
+        <div class="max-w-3xl mx-auto">
+            <h1 class="text-3xl md:text-4xl font-bold mb-6 text-dark">Cookie政策</h1>
+            <p class="text-gray-600 mb-8">最后更新日期：2024年7月1日</p>
+            <p class="text-gray-700 mb-8">SAU脑机与人工智能俱乐部（以下简称"我们"）使用Cookie和类似技术来为您提供更好的用户体验，并帮助我们改进网站。本政策旨在向您说明我们如何使用这些技术，以及您如何控制它们。</p>
+            <p class="text-gray-700 mb-8">通过访问或使用我们的网站，您同意我们按照本政策的规定使用Cookie和类似技术。如果您不同意本政策的任何内容，请立即停止访问或使用我们的网站，或根据本政策的说明禁用Cookie。</p>
+            
+            <section class="mb-10">
+                <h2 class="text-2xl font-semibold mb-4 text-dark">1. 什么是Cookie？</h2>
+                <p class="mb-4 text-gray-700">Cookie是一种小型文本文件，当您访问网站时，网站可能会存储在您的设备上。Cookie通常包含一个标识符、网站名称和一些号码及字符。Cookie可以帮助网站记住您的偏好设置、分析您的使用模式，从而提供更好的用户体验。</p>
+                <p class="mb-4 text-gray-700">除了传统的Cookie，我们还可能使用其他类似技术，如网络信标（web beacons）、像素标签（pixel tags）、本地存储（local storage）等。这些技术在功能上类似于Cookie，用于收集和存储用户信息。</p>
+            </section>
+            
+            <section class="mb-10">
+                <h2 class="text-2xl font-semibold mb-4 text-dark">2. 我们使用的Cookie类型</h2>
+                <p class="mb-4 text-gray-700">我们使用不同类型的Cookie来实现不同的功能。根据Cookie的用途和持续时间，我们使用的Cookie主要分为以下几类：</p>
+                <ul class="list-disc list-inside mb-4 text-gray-700 space-y-4">
+                    <li>
+                        <strong class="text-dark">必要Cookie（Strictly Necessary Cookies）</strong>：
+                        这类Cookie对于网站的基本功能是必需的，例如记住用户的登录状态、保持会话状态、防止欺诈等。如果禁用这些Cookie，网站的部分功能可能无法正常运行。这些Cookie通常在用户访问网站时自动设置，不需要用户同意。
+                    </li>
+                    <li>
+                        <strong class="text-dark">功能性Cookie（Functional Cookies）</strong>：
+                        这类Cookie用于增强网站的功能，例如记住用户的偏好设置、语言选择、字体大小等。这些Cookie可以提高用户体验，但即使禁用，网站的核心功能仍然可以使用。
+                    </li>
+                    <li>
+                        <strong class="text-dark">分析Cookie（Analytical Cookies）</strong>：
+                        这类Cookie用于收集有关网站使用情况的统计信息，帮助我们了解用户如何使用网站，从而改进网站。这些Cookie收集的信息通常是匿名的，不会与个人身份信息关联。我们使用的分析工具可能包括Google Analytics等第三方服务。
+                    </li>
+                    <li>
+                        <strong class="text-dark">营销Cookie（Marketing Cookies）</strong>：
+                        这类Cookie用于提供个性化的广告内容，追踪广告效果。它们可能会记录您访问过的网站，以及您如何与网站互动，从而提供与您兴趣相关的广告。这些Cookie通常由第三方广告提供商设置。
+                    </li>
+                </ul>
+            </section>
+            
+            <section class="mb-10">
+                <h2 class="text-2xl font-semibold mb-4 text-dark">3. 我们如何使用Cookie？</h2>
+                <p class="mb-4 text-gray-700">我们使用Cookie和类似技术的主要目的包括：</p>
+                <ul class="list-disc list-inside mb-4 text-gray-700 space-y-3">
+                    <li>确保网站正常运行：维护用户会话、防止欺诈等。</li>
+                    <li>改善用户体验：记住用户的偏好设置、语言选择等。</li>
+                    <li>分析网站使用情况：了解用户如何使用网站，识别热门页面，检测错误等。</li>
+                    <li>优化网站性能：根据用户使用模式改进网站功能和性能。</li>
+                    <li>提供个性化内容：根据用户兴趣提供相关的内容和广告。</li>
+                    <li>进行市场研究：了解用户需求和行为，开发新功能和服务。</li>
+                </ul>
+            </section>
+            
+            <section class="mb-10">
+                <h2 class="text-2xl font-semibold mb-4 text-dark">4. 第三方Cookie</h2>
+                <p class="mb-4 text-gray-700">除了我们自己的Cookie外，我们的网站还可能使用第三方Cookie。这些Cookie由第三方服务提供商设置，用于提供服务，如分析、广告和社交分享等。</p>
+                <p class="mb-4 text-gray-700">我们使用的第三方服务提供商可能包括：</p>
+                <ul class="list-disc list-inside mb-4 text-gray-700 space-y-2">
+                    <li>分析服务提供商（如Google Analytics）：用于收集网站使用数据，帮助我们分析和改进网站。</li>
+                    <li>社交媒体平台（如微信、微博等）：用于社交分享功能和身份验证。</li>
+                    <li>广告服务提供商：用于提供个性化广告和广告效果分析。</li>
+                </ul>
+                <p class="text-gray-700">第三方Cookie的使用受第三方服务提供商的隐私政策和Cookie政策的约束。我们不对第三方的Cookie使用行为负责，建议您查看这些第三方的隐私政策，了解他们如何收集和使用您的信息。</p>
+            </section>
+            
+            <section class="mb-10">
+                <h2 class="text-2xl font-semibold mb-4 text-dark">5. 如何管理Cookie？</h2>
+                <p class="mb-4 text-gray-700">您可以通过多种方式管理Cookie，包括浏览器设置、Cookie同意管理工具等。请注意，禁用某些Cookie可能会影响网站的部分功能。</p>
+                <h3 class="text-xl font-medium mb-3 text-dark">5.1 通过浏览器设置管理Cookie</h3>
+                <p class="mb-4 text-gray-700">大多数网络浏览器允许您管理Cookie设置，包括阻止所有Cookie、仅阻止第三方Cookie、删除已存在的Cookie等。以下是一些常见浏览器的Cookie设置指南：</p>
+                <ul class="list-disc list-inside mb-4 text-gray-700 space-y-2">
+                    <li>Google Chrome：点击菜单图标 → 设置 → 隐私和安全性 → Cookie和其他网站数据。</li>
+                    <li>Mozilla Firefox：点击菜单图标 → 设置 → 隐私与安全性 → Cookie和站点数据。</li>
+                    <li>Apple Safari：点击Safari → 偏好设置 → 隐私 → Cookie和网站数据。</li>
+                    <li>Microsoft Edge：点击菜单图标 → 设置 → 隐私、搜索和服务 → Cookie和站点权限。</li>
+                </ul>
+                <p class="mb-4 text-gray-700">请注意，不同浏览器的设置界面和选项可能有所不同。有关更详细的指导，请参考您使用的浏览器的帮助文档。</p>
+                <h3 class="text-xl font-medium mb-3 text-dark">5.2 管理分析Cookie和营销Cookie</h3>
+                <p class="mb-4 text-gray-700">对于分析Cookie和营销Cookie，您还可以通过以下方式进行管理：</p>
+                <ul class="list-disc list-inside mb-4 text-gray-700 space-y-2">
+                    <li>Google Analytics Opt-out Browser Add-on：您可以安装Google Analytics Opt-out Browser Add-on来阻止Google Analytics收集您的网站访问数据。</li>
+                    <li>网络广告行业自律机制：您可以通过各地区的网络广告行业自律机制（如数字广告联盟的选择退出工具）管理营销Cookie。</li>
+                </ul>
+            </section>
+            <section class="mb-10">
+                <h2 class="text-2xl font-semibold mb-4 text-dark">6. Cookie的存储期限</h2>
+                <p class="mb-4 text-gray-700">根据Cookie的类型和用途，Cookie的存储期限可能有所不同：</p>
+                <ul class="list-disc list-inside mb-4 text-gray-700 space-y-3">
+                    <li>
+                        <strong class="text-dark">会话Cookie（Session Cookies）</strong>：这类Cookie仅在您的浏览器会话期间存在，当您关闭浏览器时会被删除。会话Cookie主要用于维护用户在当前会话中的状态和信息。
+                    </li>
+                    <li>
+                        <strong class="text-dark">持久Cookie（Persistent Cookies）</strong>：这类Cookie会在您关闭浏览器后继续存在于您的设备上，直到达到设定的过期日期或被手动删除。持久Cookie用于记住用户的偏好设置和其他信息，以便在后续访问时提供更好的用户体验。
+                    </li>
+                </ul>
+                <p class="text-gray-700">我们会根据Cookie的用途和必要性，设置合理的存储期限，通常不会超过实现其目的所需的时间。</p>
+            </section>
+            <section class="mb-10">
+                <h2 class="text-2xl font-semibold mb-4 text-dark">7. Cookie政策的更新</h2>
+                <p class="mb-4 text-gray-700">我们可能会不时更新本Cookie政策，以反映我们的Cookie使用情况的变化、技术的发展或法律法规的要求。当我们对Cookie政策做出重大变更时，我们将通过在网站上发布修订后的Cookie政策并更新"最后更新日期"来通知您。</p>
+                <p class="text-gray-700">我们鼓励您定期查看本Cookie政策。您继续使用我们的网站将被视为您接受修订后的Cookie政策。</p>
+            </section>
+            <section class="mb-10">
+                <h2 class="text-2xl font-semibold mb-4 text-dark">8. 联系我们</h2>
+                <p class="mb-4 text-gray-700">如果您对本Cookie政策有任何疑问、意见或建议，请通过以下方式联系我们：</p>
+                <ul class="list-disc list-inside text-gray-700 space-y-2">
+                    <li>电子邮件：cookie@sau-bciai.club</li>
+                    <li>地址：[学校地址]</li>
+                    <li>电话：[联系电话]</li>
+                </ul>
+            </section>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white py-12">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <a href="index.html" class="flex items-center space-x-2 mb-6">
+                        <img src="images/logo.svg" alt="SAU脑机与人工智能俱乐部" class="w-10 h-10 rounded-full">
+                        <span class="text-xl font-bold">SAU脑机与人工智能俱乐部</span>
+                    </a>
+                    <p class="text-gray-400 mb-6">
+                        探索脑机接口与人工智能的未来，推动人机交互的革命性进步。
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fa fa-weibo text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fa fa-wechat text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fa fa-github text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">快速链接</h3>
+                    <ul class="space-y-3">
+                        <li><a href="index.html#about" class="text-gray-400 hover:text-white transition-colors">关于我们</a></li>
+                        <li><a href="index.html#projects" class="text-gray-400 hover:text-white transition-colors">研究项目</a></li>
+                        <li><a href="index.html#members" class="text-gray-400 hover:text-white transition-colors">团队成员</a></li>
+                        <li><a href="index.html#contact" class="text-gray-400 hover:text-white transition-colors">联系我们</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">政策法规</h3>
+                    <ul class="space-y-3">
+                        <li><a href="privacy.html" class="text-gray-400 hover:text-white transition-colors">隐私政策</a></li>
+                        <li><a href="terms.html" class="text-gray-400 hover:text-white transition-colors">使用条款</a></li>
+                        <li><a href="cookie.html" class="text-gray-400 hover:text-white transition-colors">Cookie政策</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">联系我们</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start space-x-3">
+                            <i class="fa fa-envelope text-gray-400 mt-1"></i>
+                            <span class="text-gray-400">contact@sau-bciai.club</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <i class="fa fa-phone text-gray-400 mt-1"></i>
+                            <span class="text-gray-400">[联系电话]</span>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <i class="fa fa-map-marker text-gray-400 mt-1"></i>
+                            <span class="text-gray-400">[学校地址]</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8">
+                <p class="text-center text-gray-500">© 2024 SAU脑机与人工智能俱乐部. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 回到顶部按钮 -->
+    <button id="back-to-top" class="fixed bottom-6 right-6 bg-primary text-white p-3 rounded-full shadow-lg opacity-0 invisible transition-all duration-300">
+        <i class="fa fa-arrow-up"></i>
+    </button>
+
+    <!-- JavaScript -->
+    <script>
+        // 导航栏滚动效果
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-white', 'shadow-md');
+                navbar.classList.remove('bg-white/90');
+            } else {
+                navbar.classList.remove('bg-white', 'shadow-md');
+                navbar.classList.add('bg-white/90');
+            }
+        });
+        
+        // 移动端菜单切换
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // 回到顶部按钮
+        const backToTopButton = document.getElementById('back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopButton.classList.remove('opacity-0', 'invisible');
+                backToTopButton.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopButton.classList.add('opacity-0', 'invisible');
+                backToTopButton.classList.remove('opacity-100', 'visible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>

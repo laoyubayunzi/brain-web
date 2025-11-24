@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAU脑机与人工智能俱乐部</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+    <!-- 移除Google字体引用，使用系统默认字体 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#10B981',
+                        accent: '#8B5CF6',
+                        dark: '#1E293B',
+                        light: '#F8FAFC'
+                    },
+                    fontFamily: {
+                    sans: ['system-ui', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'sans-serif'],
+                },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-gradient {
+                background-clip: text;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+            .bg-glass {
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+            }
+            .animate-float {
+                animation: float 3s ease-in-out infinite;
+            }
+            @keyframes float {
+                0%, 100% {
+                    transform: translateY(0);
+                }
+                50% {
+                    transform: translateY(-10px);
+                }
+            }
+        }
+    </style>
+</head>
+<body class="font-inter bg-light text-dark antialiased">
+    <!-- 导航栏 -->
+    <nav id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300 py-4">
+        <div class="container mx-auto px-4 md:px-6 flex justify-between items-center">
+            <a href="#" class="flex items-center space-x-2">
+                <img src="images/logo.svg" alt="SAU脑机与人工智能俱乐部" class="w-10 h-10 rounded-full">
+                <span class="text-xl font-bold text-dark dark:text-white">SAU脑机与人工智能俱乐部</span>
+            </a>
+            
+            <!-- 桌面端导航 -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#about" class="font-medium hover:text-primary transition-colors">关于我们</a>
+                <a href="#projects" class="font-medium hover:text-primary transition-colors">研究项目</a>
+                <a href="#members" class="font-medium hover:text-primary transition-colors">团队成员</a>
+                <a href="#contact" class="font-medium hover:text-primary transition-colors">联系我们</a>
+                <a href="#join" class="bg-primary text-white px-6 py-2 rounded-full hover:bg-primary/90 transition-all shadow-lg hover:shadow-xl">加入我们</a>
+            </div>
+            
+            <!-- 移动端菜单按钮 -->
+            <button id="menu-toggle" class="md:hidden text-dark dark:text-white focus:outline-none">
+                <i class="fa fa-bars text-2xl"></i>
+            </button>
+        </div>
+        
+        <!-- 移动端导航菜单 -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-dark shadow-lg absolute w-full py-4">
+            <div class="container mx-auto px-4 flex flex-col space-y-4">
+                <a href="#about" class="font-medium py-2 hover:text-primary transition-colors">关于我们</a>
+                <a href="#projects" class="font-medium py-2 hover:text-primary transition-colors">研究项目</a>
+                <a href="#members" class="font-medium py-2 hover:text-primary transition-colors">团队成员</a>
+                <a href="#contact" class="font-medium py-2 hover:text-primary transition-colors">联系我们</a>
+                <a href="#join" class="bg-primary text-white px-6 py-3 rounded-full text-center hover:bg-primary/90 transition-all">加入我们</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 英雄区域 -->
+    <section class="min-h-screen flex items-center pt-20 pb-16 overflow-hidden relative">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-bl from-primary/10 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 w-1/2 h-1/2 bg-gradient-to-tr from-accent/10 to-transparent"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 md:px-6 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6 md:pr-8">
+                    <h1 class="text-[clamp(2.5rem,5vw,4rem)] font-bold leading-tight">
+                        探索 <span class="bg-gradient-to-r from-primary to-accent text-gradient">脑机接口</span> 与人工智能的未来
+                    </h1>
+                    <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-xl">
+                        我们是一个致力于研究脑机接口技术、人工智能应用及神经科学交叉领域的创新团队，推动人机交互的革命性进步。
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                        <a href="#join" class="bg-primary text-white px-8 py-4 rounded-full hover:bg-primary/90 transition-all text-lg font-medium shadow-lg hover:shadow-xl text-center">
+                            立即加入
+                        </a>
+                        <a href="#projects" class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 px-8 py-4 rounded-full hover:border-primary/50 transition-all text-lg font-medium shadow-md hover:shadow-lg text-center">
+                            查看项目
+                        </a>
+                    </div>
+                    <div class="flex items-center space-x-6 pt-8">
+                        <div class="flex -space-x-3">
+                            <img src="https://picsum.photos/id/1/40/40" alt="团队成员" class="w-10 h-10 rounded-full border-2 border-white">
+                            <img src="https://picsum.photos/id/2/40/40" alt="团队成员" class="w-10 h-10 rounded-full border-2 border-white">
+                            <img src="https://picsum.photos/id/3/40/40" alt="团队成员" class="w-10 h-10 rounded-full border-2 border-white">
+                            <div class="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 border-2 border-white flex items-center justify-center text-sm font-medium">
+                                15+
+                            </div>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300">
+                            <span class="font-semibold">100+</span> 社区成员 · <span class="font-semibold">15+</span> 研究项目
+                        </p>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-primary/20 to-accent/20 rounded-3xl blur-2xl animate-pulse"></div>
+                    <div class="relative bg-white dark:bg-gray-800 rounded-3xl shadow-2xl overflow-hidden">
+                        <div class="p-1">
+                            <img src="images/OIP-C.svg" alt="脑机接口技术" class="w-full h-auto rounded-2xl">
+                        </div>
+                        <div class="absolute -bottom-10 -right-10 bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-4 animate-float">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-12 h-12 bg-secondary/20 rounded-full flex items-center justify-center">
+                                    <i class="fa fa-cog text-secondary text-xl"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium">实时脑电信号处理</p>
+                                    <div class="w-32 h-1.5 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                                        <div class="bg-secondary h-full rounded-full" style="width: 75%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="absolute -top-8 -left-8 bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-4 animate-float" style="animation-delay: 0.5s">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-12 h-12 bg-accent/20 rounded-full flex items-center justify-center">
+                                    <i class="fa fa-brain text-accent text-xl"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium">AI神经网络模型</p>
+                                    <div class="w-32 h-1.5 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                                        <div class="bg-accent h-full rounded-full" style="width: 85%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <a href="#about" class="text-gray-400 hover:text-primary transition-colors">
+                <i class="fa fa-angle-down text-3xl"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- 关于我们 -->
+    <section id="about" class="py-20 bg-gray-50 dark:bg-gray-900">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-[clamp(2rem,4vw,3rem)] font-bold mb-6">关于我们</h2>
+                <p class="text-lg text-gray-600 dark:text-gray-300">
+                    脑机接口与人工智能俱乐部成立于2020年，是一个专注于前沿科技研究与应用的学生组织。我们致力于搭建神经科学、人工智能与工程技术的交叉平台。
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- 使命 -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
+                    <div class="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fa fa-bullseye text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">我们的使命</h3>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        推动脑机接口技术的创新发展，探索人工智能与人类大脑的融合可能性，为未来人机交互开辟新的方向。
+                    </p>
+                </div>
+                
+                <!-- 愿景 -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
+                    <div class="w-16 h-16 bg-secondary/10 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fa fa-eye text-secondary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">我们的愿景</h3>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        构建一个开放、创新的研究社区，让脑机接口技术惠及更多人群，创造人机协同的未来世界。
+                    </p>
+                </div>
+                
+                <!-- 价值观 -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
+                    <div class="w-16 h-16 bg-accent/10 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fa fa-heart text-accent text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">我们的价值观</h3>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        创新、协作、开放、伦理。我们坚信技术发展应当以人为本，注重隐私保护与伦理规范。
+                    </p>
+                </div>
+            </div>
+            
+            <div class="mt-20 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="relative">
+                    <div class="absolute -top-6 -left-6 w-full h-full bg-gradient-to-br from-primary/20 to-accent/20 rounded-3xl"></div>
+                    <div class="relative bg-white dark:bg-gray-800 rounded-3xl overflow-hidden shadow-xl">
+                        <img src="https://picsum.photos/id/119/800/600" alt="实验室环境" class="w-full h-auto">
+                    </div>
+                    <div class="absolute -bottom-8 -right-8 bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-5">
+                        <div class="flex items-center space-x-4">
+                            <div class="text-4xl font-bold text-primary">3+</div>
+                            <div>
+                                <p class="text-gray-600 dark:text-gray-300">年研究经验</p>
+                                <p class="text-gray-500 dark:text-gray-400 text-sm">持续创新突破</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="space-y-6">
+                    <h3 class="text-2xl md:text-3xl font-bold">我们的研究方向</h3>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        俱乐部专注于多个前沿研究领域，结合神经科学、机器学习与工程技术，开展创新性研究项目。
+                    </p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center shrink-0 mt-1">
+                                <i class="fa fa-microchip text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold">非侵入式脑机接口</h4>
+                                <p class="text-gray-600 dark:text-gray-300">开发基于EEG、fNIRS等技术的脑电信号采集与处理系统，实现非侵入式人机交互。</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="w-10 h-10 bg-secondary/10 rounded-full flex items-center justify-center shrink-0 mt-1">
+                                <i class="fa fa-brain text-secondary"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold">神经信号解码</h4>
+                                <p class="text-gray-600 dark:text-gray-300">利用深度学习算法解析脑电信号，实现运动意图识别、情绪检测等功能。</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="w-10 h-10 bg-accent/10 rounded-full flex items-center justify-center shrink-0 mt-1">
+                                <i class="fa fa-robot text-accent"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold">脑控机器人</h4>
+                                <p class="text-gray-600 dark:text-gray-300">研发基于脑机接口技术的机器人控制系统，实现意念控制机器人运动。</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center shrink-0 mt-1">
+                                <i class="fa fa-cog text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold">脑机交互应用</h4>
+                                <p class="text-gray-600 dark:text-gray-300">探索脑机接口在医疗康复、游戏娱乐、智能家居等领域的创新应用。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 研究项目 -->
+    <section id="projects" class="py-20">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-[clamp(2rem,4vw,3rem)] font-bold mb-6">研究项目</h2>
+                <p class="text-lg text-gray-600 dark:text-gray-300">
+                    我们的团队正在开展多个创新研究项目，涵盖脑机接口、人工智能与神经科学的前沿领域。
+                </p>
+            </div>
+            
+            <!-- 项目过滤器 -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <button class="px-6 py-2 rounded-full bg-primary text-white">全部项目</button>
+                <button class="px-6 py-2 rounded-full bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">脑机接口</button>
+                <button class="px-6 py-2 rounded-full bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">人工智能</button>
+                <button class="px-6 py-2 rounded-full bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">医疗应用</button>
+                <button class="px-6 py-2 rounded-full bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">智能设备</button>
+            </div>
+            
+            <!-- 项目卡片网格 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 项目1 -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all group">
+                    <div class="relative overflow-hidden">
+                        <img src="https://picsum.photos/id/180/600/400" alt="智能脑电帽" class="w-full h-60 object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute top-4 left-4 bg-primary/90 text-white text-sm font-medium px-3 py-1 rounded-full">
+                            脑机接口
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 group-hover:text-primary transition-colors">智能脑电帽开发</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+                            研发低成本、高精度的智能脑电采集设备，用于脑机接口信号获取与分析。
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center space-x-1">
+                                <i class="fa fa-calendar-o text-gray-400"></i>
+                                <span class="text-gray-500 dark:text-gray-400 text-sm">进行中</span>
+                            </div>
+                            <a href="#" class="text-primary font-medium hover:underline flex items-center space-x-1">
+                                <span>查看详情</span>
+                                <i class="fa fa-arrow-right text-sm"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 项目2 -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all group">
+                    <div class="relative overflow-hidden">
+                        <img src="https://picsum.photos/id/160/600/400" alt="情绪识别系统" class="w-full h-60 object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute top-4 left-4 bg-secondary/90 text-white text-sm font-medium px-3 py-1 rounded-full">
+                            人工智能
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 group-hover:text-secondary transition-colors">脑电情绪识别系统</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+                            基于深度学习的脑电信号情绪识别系统，能够实时监测并识别用户的情绪状态。
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center space-x-1">
+                                <i class="fa fa-calendar-o text-gray-400"></i>
+                                <span class="text-gray-500 dark:text-gray-400 text-sm">进行中</span>
+                            </div>
+                            <a href="#" class="text-secondary font-medium hover:underline flex items-center space-x-1">
+                                <span>查看详情</span>
+                                <i class="fa fa-arrow-right text-sm"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 项目3 -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all group">
+                    <div class="relative overflow-hidden">
+                        <img src="https://picsum.photos/id/96/600/400" alt="脑控轮椅" class="w-full h-60 object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute top-4 left-4 bg-accent/90 text-white text-sm font-medium px-3 py-1 rounded-full">
+                            医疗应用
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 group-hover:text-accent transition-colors">脑控轮椅系统</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+                            为行动不便人士设计的脑控轮椅系统，通过脑电信号实现轮椅的精准控制。
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center space-x-1">
+                                <i class="fa fa-calendar-o text-gray-400"></i>
+                                <span class="text-gray-500 dark:text-gray-400 text-sm">已完成</span>
+                            </div>
+                            <a href="#" class="text-accent font-medium hover:underline flex items-center space-x-1">
+                                <span>查看详情</span>
+                                <i class="fa fa-arrow-right text-sm"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 项目4 -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all group">
+                    <div class="relative overflow-hidden">
+                        <img src="https://picsum.photos/id/119/600/400" alt="脑控机器人" class="w-full h-60 object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute top-4 left-4 bg-primary/90 text-white text-sm font-medium px-3 py-1 rounded-full">
+                            智能设备
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 group-hover:text-primary transition-colors">脑控机械臂研究</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+                            研究基于脑电信号的机械臂控制系统，实现复杂动作的精准控制与操作。
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center space-x-1">
+                                <i class="fa fa-calendar-o text-gray-400"></i>
+                                <span class="text-gray-500 dark:text-gray-400 text-sm">进行中</span>
+                            </div>
+                            <a href="#" class="text-primary font-medium hover:underline flex items-center space-x-1">
+                                <span>查看详情</span>
+                                <i class="fa fa-arrow-right text-sm"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 项目5 -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all group">
+                    <div class="relative overflow-hidden">
+                        <img src="https://picsum.photos/id/152/600/400" alt="睡眠监测" class="w-full h-60 object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute top-4 left-4 bg-secondary/90 text-white text-sm font-medium px-3 py-1 rounded-full">
+                            医疗应用
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 group-hover:text-secondary transition-colors">脑电睡眠监测系统</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+                            基于脑电信号的睡眠质量监测与分析系统，提供个性化的睡眠改善建议。
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center space-x-1">
+                                <i class="fa fa-calendar-o text-gray-400"></i>
+                                <span class="text-gray-500 dark:text-gray-400 text-sm">原型阶段</span>
+                            </div>
+                            <a href="#" class="text-secondary font-medium hover:underline flex items-center space-x-1">
+                                <span>查看详情</span>
+                                <i class="fa fa-arrow-right text-sm"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 项目6 -->
+                <div class="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all group">
+                    <div class="relative overflow-hidden">
+                        <img src="https://picsum.photos/id/20/600/400" alt="VR脑控交互" class="w-full h-60 object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute top-4 left-4 bg-accent/90 text-white text-sm font-medium px-3 py-1 rounded-full">
+                            智能设备
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 group-hover:text-accent transition-colors">VR脑控交互系统</h3>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">
+                            将脑机接口技术与VR技术相结合，实现沉浸式的脑控交互体验。
+                        </p>
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center space-x-1">
+                                <i class="fa fa-calendar-o text-gray-400"></i>
+                                <span class="text-gray-500 dark:text-gray-400 text-sm">概念验证</span>
+                            </div>
+                            <a href="#" class="text-accent font-medium hover:underline flex items-center space-x-1">
+                                <span>查看详情</span>
+                                <i class="fa fa-arrow-right text-sm"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="inline-block bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 px-8 py-3 rounded-full hover:border-primary/50 transition-all text-lg font-medium shadow-md hover:shadow-lg">
+                    查看更多项目
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 研究成果 -->
+    <section class="py-20 bg-gray-50 dark:bg-gray-900">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-[clamp(2rem,4vw,3rem)] font-bold mb-6">我们的研究成果</h2>
+                    <p class="text-lg text-gray-600 dark:text-gray-300 mb-8">
+                        俱乐部成员在脑机接口与人工智能领域取得了多项研究成果，包括学术论文、专利申请和获奖情况。
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md">
+                            <div class="flex justify-between items-start mb-4">
+                                <div>
+                                    <span class="inline-block bg-primary/10 text-primary text-sm font-medium px-3 py-1 rounded-full mb-2">学术论文</span>
+                                    <h3 class="text-xl font-bold">基于深度学习的脑电信号分类算法研究</h3>
+                                </div>
+                                <div class="text-2xl font-bold text-primary">01</div>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4">
+                                提出了一种基于注意力机制的深度学习模型，用于脑电信号的高效分类，分类准确率达到94.5%。
+                            </p>
+                            <div class="flex items-center space-x-4 text-sm text-gray-500 dark:text-gray-400">
+                                <span>发表于：IEEE Transactions on Neural Systems and Rehabilitation Engineering</span>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md">
+                            <div class="flex justify-between items-start mb-4">
+                                <div>
+                                    <span class="inline-block bg-secondary/10 text-secondary text-sm font-medium px-3 py-1 rounded-full mb-2">专利申请</span>
+                                    <h3 class="text-xl font-bold">一种便携式脑电信号采集与分析设备</h3>
+                                </div>
+                                <div class="text-2xl font-bold text-secondary">02</div>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4">
+                                设计了一种低成本、高精度的便携式脑电采集设备，适用于日常生活中的脑电信号监测与分析。
+                            </p>
+                            <div class="flex items-center space-x-4 text-sm text-gray-500 dark:text-gray-400">
+                                <span>申请号：CN202210012345.6</span>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md">
+                            <div class="flex justify-between items-start mb-4">
+                                <div>
+                                    <span class="inline-block bg-accent/10 text-accent text-sm font-medium px-3 py-1 rounded-full mb-2">获奖情况</span>
+                                    <h3 class="text-xl font-bold">全国大学生智能汽车竞赛极速越野组二等奖</h3>
+                                </div>
+                                <div class="text-2xl font-bold text-accent">03</div>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4">
+                                基于脑机接口技术的智能辅助系统在全国大学生电子设计竞赛中获得一等奖。
+                            </p>
+                            <div class="flex items-center space-x-4 text-sm text-gray-500 dark:text-gray-400">
+                                <span>时间：2025年8月</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative">
+                    <div class="absolute -top-10 -right-10 w-80 h-80 bg-primary/20 rounded-full blur-3xl"></div>
+                    <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8">
+                        <h3 class="text-xl font-bold mb-6">研究数据统计</h3>
+                        
+                        <div class="space-y-8">
+                            <!-- 论文图表 -->
+                            <div>
+                                <h4 class="text-lg font-semibold mb-4">发表论文统计</h4>
+                                <div class="h-64">
+                                    <canvas id="papersChart"></canvas>
+                                </div>
+                            </div>
+                            
+                            <!-- 研究领域分布 -->
+                            <div class="grid grid-cols-2 gap-6">
+                                <div>
+                                    <h4 class="text-lg font-semibold mb-4">研究领域分布</h4>
+                                    <div class="h-48">
+                                        <canvas id="researchChart"></canvas>
+                                    </div>
+                                </div>
+                                
+                                <!-- 成果统计 -->
+                                <div class="space-y-4">
+                                    <div>
+                                        <div class="flex justify-between mb-1">
+                                            <span class="font-medium">学术论文</span>
+                                            <span class="font-semibold">12</span>
+                                        </div>
+                                        <div class="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                                            <div class="bg-primary h-full rounded-full" style="width: 60%"></div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div>
+                                        <div class="flex justify-between mb-1">
+                                            <span class="font-medium">专利申请</span>
+                                            <span class="font-semibold">8</span>
+                                        </div>
+                                        <div class="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                                            <div class="bg-secondary h-full rounded-full" style="width: 40%"></div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div>
+                                        <div class="flex justify-between mb-1">
+                                            <span class="font-medium">竞赛奖项</span>
+                                            <span class="font-semibold">15</span>
+                                        </div>
+                                        <div class="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                                            <div class="bg-accent h-full rounded-full" style="width: 75%"></div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div>
+                                        <div class="flex justify-between mb-1">
+                                            <span class="font-medium">软件著作权</span>
+                                            <span class="font-semibold">6</span>
+                                        </div>
+                                        <div class="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                                            <div class="bg-primary/70 h-full rounded-full" style="width: 30%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 团队成员 -->
+    <section id="members" class="py-20">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-[clamp(2rem,4vw,3rem)] font-bold mb-6">团队成员</h2>
+                <p class="text-lg text-gray-600 dark:text-gray-300">
+                    我们的团队由来自不同专业背景的优秀学生组成，包括电子工程、计算机科学、机械工程等领域。
+                </p>
+            </div>
+            
+            <!-- 核心团队 -->
+            <div class="mb-20">
+                <h3 class="text-2xl font-bold mb-10 text-center">核心团队</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- 成员1 -->
+                    <div class="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all group">
+                        <div class="relative overflow-hidden">
+                                                        <img src="images/fanyuanfei.svg" alt="樊远飞" class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                                <div class="p-6 w-full">
+                                    <div class="flex justify-center space-x-4">
+                                        <a href="#" class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-primary transition-colors">
+                                            <i class="fa fa-linkedin"></i>
+                                        </a>
+                                        <a href="#" class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-primary transition-colors">
+                                            <i class="fa fa-github"></i>
+                                        </a>
+                                        <a href="#" class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-primary transition-colors">
+                                            <i class="fa fa-envelope"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6 text-center">
+                            <h4 class="text-xl font-bold mb-1">樊远飞</h4>
+                            <p class="text-primary font-medium mb-3">俱乐部主席</p>
+                            <p class="text-gray-600 dark:text-gray-300 text-sm">
+                                交通运输专业，专注于脑机接口硬件设计与信号处理算法研究。
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- 成员2 -->
+                    <div class="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all group">
+                        <div class="relative overflow-hidden">
+                                               <img src="images/fuyihui.svg" alt="团队成员" class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                                <div class="p-6 w-full">
+                                    <div class="flex justify-center space-x-4">
+                                        <a href="#" class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-primary transition-colors">
+                                            <i class="fa fa-linkedin"></i>
+                                        </a>
+                                        <a href="#" class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-primary transition-colors">
+                                            <i class="fa fa-github"></i>
+                                        </a>
+                                        <a href="#" class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-primary transition-colors">
+                                            <i class="fa fa-envelope"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6 text-center">
+                            <h4 class="text-xl font-bold mb-1">傅译辉</h4>
+                            <p class="text-secondary font-medium mb-3">俱乐部副主席</p>
+                            <p class="text-gray-600 dark:text-gray-300 text-sm">
+                               电子信息工程专业，专注于电子线路研究，单片机的开发与使用。
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- 成员3 -->
+                    <div class="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all group">
+                        <div class="relative overflow-hidden">
+                                                        <img src="images/zhouzhuojun.svg" alt="团队成员" class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                                <div class="p-6 w-full">
+                                    <div class="flex justify-center space-x-4">
+                                        <a href="#" class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-primary transition-colors">
+                                            <i class="fa fa-linkedin"></i>
+                                        </a>
+                                        <a href="#" class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-primary transition-colors">
+                                            <i class="fa fa-github"></i>
+                                        </a>
+                                        <a href="#" class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-primary transition-colors">
+                                            <i class="fa fa-envelope"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6 text-center">
+                            <h4 class="text-xl font-bold mb-1">邹卓君</h4>
+                            <p class="text-accent font-medium mb-3">综合办公室部长</p>
+                            <p class="text-gray-600 dark:text-gray-300 text-sm">
+                                交通运输专业，具备 PPT 可视化设计、项目申报书撰写、路演答辩呈现及品牌宣传推广等专业能力。
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- 成员4 -->
+                    <div class="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all group">
+                        <div class="relative overflow-hidden">
+                                                        <img src="images/jiahao.svg" alt="团队成员" class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                                <div class="p-6 w-full">
+                                    <div class="flex justify-center space-x-4">
+                                        <a href="#" class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-primary transition-colors">
+                                            <i class="fa fa-linkedin"></i>
+                                        </a>
+                                        <a href="#" class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-primary transition-colors">
+                                            <i class="fa fa-github"></i>
+                                        </a>
+                                        <a href="#" class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-primary transition-colors">
+                                            <i class="fa fa-envelope"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6 text-center">
+                            <h4 class="text-xl font-bold mb-1">嘉豪</h4>
+                            <p class="text-primary font-medium mb-3">神秘兜帽男</p>
+                            <p class="text-gray-600 dark:text-gray-300 text-sm">
+                                计算机科学专业，专注于cmd技术应用与股票数据预测。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 指导老师 -->
+            <div>
+                <h3 class="text-2xl font-bold mb-10 text-center">指导老师</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 justify-items-center">
+                    <!-- 老师1 -->
+                    <div class="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all group">
+                        <div class="relative overflow-hidden">
+                                                     <img src="images/weiyuanzhang.svg" alt="团队成员" class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110">
+
+                        </div>
+                        <div class="p-6 text-center">
+                            <h4 class="text-xl font-bold mb-1">魏院长</h4>
+                            <p class="text-primary font-medium mb-3">神经科学</p>
+                            <p class="text-gray-600 dark:text-gray-300 text-sm">
+                                脑科学研究所教授，主要研究方向为认知神经科学与脑机接口技术。
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- 老师2 -->
+                    <div class="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all group">
+                        <div class="relative overflow-hidden">
+                            <img src="images/lulaoshi.svg" alt="指导老师" class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110">
+                        </div>
+                        <div class="p-6 text-center">
+                            <h4 class="text-xl font-bold mb-1">路老师</h4>
+                            <p class="text-secondary font-medium mb-3">创新创业学院讲师 </p>
+                            <p class="text-gray-600 dark:text-gray-300 text-sm">
+                               英国苏赛克斯大学 技术与创新管理专业 硕士研究生
+			    <p class="text-gray-600 dark:text-gray-300 text-sm">
+  			                东北财经大学 企业管理专业 博士研究生
+                            </p>
+                        </div>
+                    </div>
+                    
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- 加入我们 -->
+    <section id="join" class="py-20">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-[clamp(2rem,4vw,3rem)] font-bold mb-6">加入我们</h2>
+                    <p class="text-lg text-gray-600 dark:text-gray-300 mb-8">
+                        无论你是对脑机接口技术充满好奇的初学者，还是有相关经验的专业人士，我们都欢迎你的加入！
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center shrink-0">
+                                <i class="fa fa-users text-primary text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-2">我们需要的人才</h3>
+                                <ul class="list-disc list-inside text-gray-600 dark:text-gray-300 space-y-2">
+                                    <li>电子工程/生物医学工程相关专业，对硬件设计感兴趣</li>
+                                    <li>计算机科学/人工智能相关专业，熟悉机器学习算法</li>
+                                    <li>神经科学/认知科学相关专业，了解大脑工作原理</li>
+                                    <li>对脑机接口技术有浓厚兴趣，愿意学习和探索</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center shrink-0">
+                                <i class="fa fa-tasks text-secondary text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-2">你将获得的机会</h3>
+                                <ul class="list-disc list-inside text-gray-600 dark:text-gray-300 space-y-2">
+                                    <li>参与前沿科研项目，积累实践经验</li>
+                                    <li>与跨学科团队合作，拓展知识面</li>
+                                    <li>获得专业指导老师的指导和支持</li>
+                                    <li>发表学术论文、申请专利的机会</li>
+                                    <li>参加国内外学术会议和竞赛</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center shrink-0">
+                                <i class="fa fa-check-circle text-accent text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold mb-2">加入流程</h3>
+                                <ol class="list-decimal list-inside text-gray-600 dark:text-gray-300 space-y-2">
+                                    <li>填写申请表，提交个人简历</li>
+                                    <li>参加面试和技术考核</li>
+                                    <li>通过考核后，成为正式成员</li>
+                                    <li>分配到相应研究小组，开始项目研究</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8">
+                    <h3 class="text-2xl font-bold mb-6">填写申请表</h3>
+                    <form class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">姓名</label>
+                                <input type="text" id="name" name="name" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary">
+                            </div>
+                            <div>
+                                <label for="student-id" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">学号/工号</label>
+                                <input type="text" id="student-id" name="student-id" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary">
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">邮箱</label>
+                                <input type="email" id="email" name="email" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary">
+                            </div>
+                            <div>
+                                <label for="phone" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">电话</label>
+                                <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="major" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">专业/学科</label>
+                            <input type="text" id="major" name="major" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary">
+                        </div>
+                        <div>
+                            <label for="interest" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">研究兴趣方向 (可多选)</label>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                <label class="flex items-center space-x-2 cursor-pointer">
+                                    <input type="checkbox" name="interest" value="hardware" class="rounded text-primary focus:ring-primary">
+                                    <span>脑机接口硬件设计</span>
+                                </label>
+                                <label class="flex items-center space-x-2 cursor-pointer">
+                                    <input type="checkbox" name="interest" value="signal" class="rounded text-primary focus:ring-primary">
+                                    <span>脑电信号处理</span>
+                                </label>
+                                <label class="flex items-center space-x-2 cursor-pointer">
+                                    <input type="checkbox" name="interest" value="ai" class="rounded text-primary focus:ring-primary">
+                                    <span>人工智能算法</span>
+                                </label>
+                                <label class="flex items-center space-x-2 cursor-pointer">
+                                    <input type="checkbox" name="interest" value="application" class="rounded text-primary focus:ring-primary">
+                                    <span>3D建模</span>
+                                </label>
+                                <label class="flex items-center space-x-2 cursor-pointer">
+                                    <input type="checkbox" name="interest" value="neuroscience" class="rounded text-primary focus:ring-primary">
+                                    <span>神经科学研究</span>
+                                </label>
+                                <label class="flex items-center space-x-2 cursor-pointer">
+                                    <input type="checkbox" name="interest" value="other" class="rounded text-primary focus:ring-primary">
+                                    <span>其他方向</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="experience" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">相关经验/项目经历</label>
+                            <textarea id="experience" name="experience" rows="4" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
+                        </div>
+                        <div>
+                            <label for="reason" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">为什么想加入我们？</label>
+                            <textarea id="reason" name="reason" rows="3" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-primary text-white py-4 rounded-lg hover:bg-primary/90 transition-all text-lg font-medium shadow-lg hover:shadow-xl">
+                            提交申请
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系我们 -->
+    <section id="contact" class="py-20 bg-gray-50 dark:bg-gray-900">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-[clamp(2rem,4vw,3rem)] font-bold mb-6">联系我们</h2>
+                <p class="text-lg text-gray-600 dark:text-gray-300">
+                    如有任何问题或合作意向，欢迎通过以下方式联系我们。
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all text-center">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fa fa-envelope text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">邮箱联系</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        发送邮件给我们，我们会尽快回复您。
+                    </p>
+                    <a href="mailto:contact@bciaiclub.com" class="text-primary font-medium hover:underline">
+                        fyf150840960062022@163.com
+                    </a>
+                </div>
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all text-center">
+                    <div class="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fa fa-map-marker text-secondary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">办公地址</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        欢迎前来参观我们的实验室。
+                    </p>
+                    <p class="font-medium">
+                        创新创业学院116
+                    </p>
+                </div>
+                <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all text-center">
+                    <div class="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fa fa-weixin text-accent text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">微信公众号</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        关注我们的公众号，获取最新动态。
+                    </p>
+                    <div class="w-32 h-32 bg-gray-100 dark:bg-gray-700 mx-auto flex items-center justify-center rounded-lg">
+                        <span class="text-sm text-gray-500">公众号二维码
+                        <br>
+                        扫码关注</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden">
+                <div class="grid grid-cols-1 lg:grid-cols-2">
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-6">发送消息给我们</h3>
+                        <form class="space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="contact-name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">姓名</label>
+                                    <input type="text" id="contact-name" name="contact-name" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary">
+                                </div>
+                                <div>
+                                    <label for="contact-email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">邮箱</label>
+                                    <input type="email" id="contact-email" name="contact-email" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary">
+                                </div>
+                            </div>
+                            <div>
+                                <label for="contact-subject" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">主题</label>
+                                <input type="text" id="contact-subject" name="contact-subject" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary">
+                            </div>
+                            <div>
+                                <label for="contact-message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">消息内容</label>
+                                <textarea id="contact-message" name="contact-message" rows="5" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
+                            </div>
+                            <div>
+                                <button type="submit" class="w-full bg-primary text-white py-4 rounded-lg hover:bg-primary/90 transition-all text-lg font-medium shadow-lg hover:shadow-xl">
+                                    发送消息
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="bg-gray-100 dark:bg-gray-700 hidden lg:block">
+                        <div class="w-full h-full flex items-center justify-center">
+                            <div class="text-center p-8">
+                                <div class="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <i class="fa fa-map-o text-primary text-2xl"></i>
+                                </div>
+                                <h4 class="text-xl font-bold mb-2">我们的位置</h4>
+                                <p class="text-gray-600 dark:text-gray-300 mb-4">
+                                    创新创业学院116
+                                </p>
+                                <p class="text-sm text-gray-500 dark:text-gray-400">
+                                                                    </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white py-16">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <a href="#" class="flex items-center space-x-2 mb-6">
+                        <img src="images/logo.svg" alt="SAU脑机与人工智能俱乐部" class="w-10 h-10 rounded-full">
+                        <span class="text-xl font-bold">SAU脑机与人工智能俱乐部</span>
+                    </a>
+                    <p class="text-gray-400 mb-6">
+                        探索脑机接口与人工智能的未来，推动人机交互的革命性进步。
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-white hover:bg-primary transition-colors">
+                            <i class="fa fa-weixin"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-white hover:bg-primary transition-colors">
+                            <i class="fa fa-weibo"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-white hover:bg-primary transition-colors">
+                            <i class="fa fa-github"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-white hover:bg-primary transition-colors">
+                            <i class="fa fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-6">快速链接</h3>
+                    <ul class="space-y-4">
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition-colors">关于我们</a></li>
+                        <li><a href="#projects" class="text-gray-400 hover:text-white transition-colors">研究项目</a></li>
+                        <li><a href="#members" class="text-gray-400 hover:text-white transition-colors">团队成员</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors">联系我们</a></li>
+                        <li><a href="#join" class="text-gray-400 hover:text-white transition-colors">加入我们</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-6">资源中心</h3>
+                    <ul class="space-y-4">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">研究论文</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">项目文档</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">教程资料</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">开源代码</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">常见问题</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-6">订阅通讯</h3>
+                    <p class="text-gray-400 mb-4">
+                        订阅我们的通讯，获取最新研究动态和活动信息。
+                    </p>
+                    <form class="space-y-4">
+                        <input type="email" placeholder="输入您的邮箱地址" class="w-full px-4 py-3 rounded-lg bg-gray-800 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-primary">
+                        <button type="submit" class="w-full bg-primary text-white py-3 rounded-lg hover:bg-primary/90 transition-all font-medium">
+                            订阅
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-500 mb-4 md:mb-0">
+                        &copy; 2025 SAU脑机与人工智能俱乐部. 保留所有权利.
+                    </p>
+                    <div class="flex space-x-6">
+                        <a href="privacy.html" class="text-gray-500 hover:text-gray-300 transition-colors">隐私政策</a>
+                        <a href="terms.html" class="text-gray-500 hover:text-gray-300 transition-colors">使用条款</a>
+                        <a href="cookie.html" class="text-gray-500 hover:text-gray-300 transition-colors">Cookie 政策</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // 导航栏滚动效果
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-white', 'dark:bg-gray-900', 'shadow-md');
+                navbar.classList.remove('py-4');
+                navbar.classList.add('py-2');
+            } else {
+                navbar.classList.remove('bg-white', 'dark:bg-gray-900', 'shadow-md');
+                navbar.classList.add('py-4');
+                navbar.classList.remove('py-2');
+            }
+        });
+
+        // 移动菜单切换
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                    // 关闭移动菜单
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+
+        // 图表初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            // 论文统计图表
+            const papersCtx = document.getElementById('papersChart').getContext('2d');
+            const papersChart = new Chart(papersCtx, {
+                type: 'line',
+                data: {
+                    labels: ['2020', '2021', '2022', '2025'],
+                    datasets: [{
+                        label: '发表论文数量',
+                        data: [2, 3, 4, 12],
+                        borderColor: '#3B82F6',
+                        backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                        tension: 0.4,
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+
+            // 研究领域分布图表
+            const researchCtx = document.getElementById('researchChart').getContext('2d');
+            const researchChart = new Chart(researchCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['脑机接口', '人工智能', '神经科学', '医疗应用', '其他'],
+                    datasets: [{
+                        data: [35, 25, 20, 15, 5],
+                        backgroundColor: ['#3B82F6', '#10B981', '#8B5CF6', '#EC4899', '#6B7280']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                boxWidth: 12,
+                                padding: 10
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+    <script src="api.js"></script>
+    <script>
+        // 初始化API通信和数据加载
+        document.addEventListener('DOMContentLoaded', function() {
+            // 初始化API功能
+            if (typeof initAPI !== 'undefined') {
+                initAPI();
+            }
+        });
+    </script>
+</body>
+</html>
